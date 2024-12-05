@@ -12,12 +12,14 @@ class PhoneBook
 		PhoneBook() {};
 		~PhoneBook() {};
 
-		Contact	contact[8];
+		Contact				contact[8];
+		std::vector<int>	list;
+
 		
 		void 		addContact(int index);
 		void 		displayAllContacts(int max_index);
 		void		displayContact(int index);
 		void		truncateContactInformation(std::string text);
-		void 		searchContact(std::string userInput);
+		void 		searchContact(void);
 		bool		checkValidIndex(int index, std::string command);
 };

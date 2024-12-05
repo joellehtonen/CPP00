@@ -13,30 +13,35 @@ int main(void)
 	PhoneBook 	phoneBook;
 	std::string	userInput;
 	int			index = 0;
+	int 		max_index = 0;
 
-	std::cout << std::endl << "Welcome. Please enter a command" << std::endl << std::endl;
+	std::cout << std::endl << "Welcome. Please enter a command" << std::endl;
 	while (true)
 	{
+		std::cout << std::endl;
 		instructions();
 		std::cout << std::endl;
 		std::getline(std::cin, userInput);\
 		std::cout << std::endl;
 		if (userInput == "ADD")
 		{
+			if (index > 7)
+				index = 0;
 			phoneBook.addContact(index);
 			phoneBook.checkValidIndex(index, "add");
 			index++;
-			if (index > 7)
-				index = 0;
 		}
 		else if (userInput == "SEARCH")
 		{
 			if (phoneBook.contact[0].firstName.empty() == true)
-				std::cout << "No contacts in the phonebook" << std::endl << std::endl;
+				std::cout << "No contacts in the phonebook" << std::endl;
 			else
 			{
-				phoneBook.displayContact(index);
-				//phoneBook.searchContact(userInput);
+				if (index > max_index)
+					max_index = index;
+				phoneBook.displayAllContacts(max_index);
+				std::cout << std::endl;
+				phoneBook.searchContact();
 			}
 		}
 		else if (userInput == "EXIT")
@@ -45,6 +50,6 @@ int main(void)
 			break ;
 		}
 		else
-			std::cout << "Please enter a valid command" << std::endl << std::endl;
+			std::cout << "Please enter a valid command" << std::endl;
 	}
 }

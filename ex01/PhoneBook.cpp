@@ -10,7 +10,7 @@ void	PhoneBook::displayAllContacts(int max_index)
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
-	for (int index = 0; index <= max_index; index++)
+	for (int index = 0; index < max_index; index++)
 		this->displayContact(index);
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 
@@ -31,21 +31,23 @@ void	PhoneBook::truncateContactInformation(std::string text)
 		text.resize(9);
 		text.push_back('.');
 	}
-	std::cout << "|";
 	std::cout << std::setw(10) << text;
 	std::cout << "|";
 }
 
-void	PhoneBook::searchContact(std::string userInput)
+void	PhoneBook::searchContact(void)
 {
-	int index = std::stoi(userInput);
+	std::string userInput;
+	int			index;
 
+	std::cout << "Please enter the index of an entry to display more information" << std::endl;
 	while (true)
 	{
 		std::getline(std::cin, userInput);
+		index = std::stoi(userInput);
 		if (this->checkValidIndex(index, "search") == true)
 			break ;
-		std::cout << "Please type a valid index" << std::endl << std::endl;
+		std::cout << "Please type a valid index" << std::endl;
 	}
 	std::cout << "First name: ";
 	std::cout << this->contact[index].firstName << std::endl;
@@ -61,17 +63,18 @@ void	PhoneBook::searchContact(std::string userInput)
 
 bool	PhoneBook::checkValidIndex(int index, std::string command)
 {
-	std::vector<int> list;
 
 	if (command == "add")
 	{
-		list.push_back(index);
+		list.push_back(index)
 		return (true);
 	}
 	if (command == "search")
 	{
 		if (std::find(list.begin(), list.end(), index) == list.end())
+		{
 			return (false);
+		}
 		else
 			return (true);
 	}
