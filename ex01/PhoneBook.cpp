@@ -45,7 +45,7 @@ void	PhoneBook::searchContact(std::string userInput)
 		std::getline(std::cin, userInput);
 		if (this->checkValidIndex(index, "search") == true)
 			break ;
-		std::cout << "Please type a valid index" << std::endl;
+		std::cout << "Please type a valid index" << std::endl << std::endl;
 	}
 	std::cout << "First name: ";
 	std::cout << this->contact[index].firstName << std::endl;
