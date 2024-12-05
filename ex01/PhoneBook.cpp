@@ -66,7 +66,7 @@ bool	PhoneBook::checkValidIndex(int index, std::string command)
 
 	if (command == "add")
 	{
-		list.push_back(index)
+		list.push_back(index);
 		return (true);
 	}
 	if (command == "search")
