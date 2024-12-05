@@ -54,17 +54,17 @@ bool	Contact::validateInput(std::string userInput, int index)
 {
 	if (userInput.empty() == true)
 	{
-		std::cout << "The field cannot be empty";
+		std::cout << "The field cannot be empty" << std::endl;
 		return (false);
 	}
 	if (index != 3 && containsOnlyAlphabet(userInput) == false)
 	{
-		std::cout << "The field must contain only letters";
+		std::cout << "The field must contain only letters" << std::endl;
 		return (false);
 	}
 	if  (index == 3 && containsOnlyNumber(userInput) == false)
 	{
-		std::cout << "The field must contain only numbers";
+		std::cout << "The field must contain only numbers" << std::endl;
 		return (false);
 	}
 	return (true);

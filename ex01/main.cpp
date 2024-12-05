@@ -4,9 +4,9 @@
 void	instructions(void)
 {
 	std::cout << "Welcome. Please enter a command" << std::endl;
-	std::cout << "ADD: to save a new contact";
-	std::cout << "SEARCH: to display a specific contact";
-	std::cout << "EXIT: to quit the program";
+	std::cout << "ADD: to save a new contact" << std::endl;
+	std::cout << "SEARCH: to display a specific contact" << std::endl;
+	std::cout << "EXIT: to quit the program" << std::endl;
 }
 
 int main(void)
@@ -30,7 +30,7 @@ int main(void)
 		else if (userInput == "SEARCH")
 		{
 			if (phoneBook.contact[0].firstName.empty() == true)
-				std::cout << "No contacts in the phonebook";
+				std::cout << "No contacts in the phonebook" << std::endl;
 			else
 			{
 				phoneBook.displayContact(index);
