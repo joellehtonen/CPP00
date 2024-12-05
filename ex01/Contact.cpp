@@ -59,7 +59,7 @@ bool	Contact::validateInput(std::string userInput, int index)
 	}
 	if (index != 3 && containsOnlyAlphabet(userInput) == false)
 	{
-		std::cout << "The field must contain only letters" << std::endl;
+		std::cout << "The field must contain only letters or hyphens" << std::endl;
 		return (false);
 	}
 	if  (index == 3 && containsOnlyNumber(userInput) == false)

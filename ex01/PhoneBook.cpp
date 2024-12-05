@@ -43,8 +43,11 @@ void	PhoneBook::searchContact(void)
 	std::cout << "Please enter the index of an entry to display more information" << std::endl;
 	while (true)
 	{
+		std::cout << std::endl;
 		std::getline(std::cin, userInput);
-		index = std::stoi(userInput);
+		std::cout << std::endl;
+		if (userInput.empty() == false && this->contact->containsOnlyNumber(userInput) == true)
+			index = std::stoi(userInput);
 		if (this->checkValidIndex(index, "search") == true)
 			break ;
 		std::cout << "Please type a valid index" << std::endl;
@@ -63,7 +66,6 @@ void	PhoneBook::searchContact(void)
 
 bool	PhoneBook::checkValidIndex(int index, std::string command)
 {
-
 	if (command == "add")
 	{
 		list.push_back(index);
