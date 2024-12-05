@@ -12,6 +12,8 @@ std::string	Contact::indexCheck(int index)
 		return ("phone number");
 	if (index == 4)
 		return ("darkest secret");
+	else
+		return ("");
 }
 
 bool	Contact::containsOnlyAlphabet(std::string userInput)

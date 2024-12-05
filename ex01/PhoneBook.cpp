@@ -1,11 +1,11 @@
 #include "PhoneBook.hpp"
 
-void PhoneBook::addContact(int index)
+void	PhoneBook::addContact(int index)
 {
 	this->contact[index].setContactInformation();
 }
 
-void PhoneBook::displayAllContacts(int max_index)
+void	PhoneBook::displayAllContacts(int max_index)
 {
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
@@ -15,26 +15,28 @@ void PhoneBook::displayAllContacts(int max_index)
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 
 }
-void PhoneBook::displayContact(int index)
+void	PhoneBook::displayContact(int index)
 {
 	std::cout << "|" << std::setw(10) << index << "|";
-	std::cout << "|" << truncateContactInformation(this->contact[index].firstName) << "|";
-	std::cout << "|" << truncateContactInformation(this->contact[index].lastName) << "|";
-	std::cout << "|" << truncateContactInformation(this->contact[index].nickname) << "|";
+	truncateContactInformation(this->contact[index].firstName);
+	truncateContactInformation(this->contact[index].lastName);
+	truncateContactInformation(this->contact[index].nickname);
 	std::cout << std::endl;
 }
 
-std::string PhoneBook::truncateContactInformation(std::string text)
+void	PhoneBook::truncateContactInformation(std::string text)
 {
 	if (text.length() > 10)
 	{
 		text.resize(9);
 		text.push_back('.');
 	}
+	std::cout << "|";
 	std::cout << std::setw(10) << text;
+	std::cout << "|";
 }
 
-void PhoneBook::searchContact(std::string userInput)
+void	PhoneBook::searchContact(std::string userInput)
 {
 	int index = std::stoi(userInput);
 
@@ -73,4 +75,6 @@ bool	PhoneBook::checkValidIndex(int index, std::string command)
 		else
 			return (true);
 	}
+	return (false);
+
 }
