@@ -21,8 +21,10 @@ int main(void)
 		std::cout << std::endl;
 		instructions();
 		std::cout << std::endl;
-		std::getline(std::cin, userInput);\
+		std::getline(std::cin, userInput);
 		std::cout << std::endl;
+		if (std::cin.eof() == true)
+			std::exit(0);
 		if (userInput == "ADD")
 		{
 			if (index > 7)

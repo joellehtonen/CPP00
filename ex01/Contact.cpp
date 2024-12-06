@@ -84,6 +84,8 @@ void	Contact::setContactInformation(void)
 			std::cout << "Please enter the contact's " << requestedInformation << std::endl;
 			std::getline(std::cin, userInput);
 			std::cout << std::endl;
+			if (std::cin.eof() == true)
+				std::exit(0);
 			if (validateInput(userInput, i) == true)
 				break ;
 		}

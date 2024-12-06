@@ -46,11 +46,15 @@ void	PhoneBook::searchContact(void)
 		std::cout << std::endl;
 		std::getline(std::cin, userInput);
 		std::cout << std::endl;
-		if (userInput.empty() == false && this->contact->containsOnlyNumber(userInput) == true)
+		if (std::cin.eof() == true)
+			std::exit(0);
+		if (userInput.empty() == false 
+			&& userInput.length() == 1
+			&& this->contact->containsOnlyNumber(userInput) == true)
 			index = std::stoi(userInput);
 		if (this->checkValidIndex(index, "search") == true)
 			break ;
-		std::cout << "Please type a valid index" << std::endl;
+		std::cout << "Please enter a valid index" << std::endl;
 	}
 	std::cout << "First name: ";
 	std::cout << this->contact[index].firstName << std::endl;
