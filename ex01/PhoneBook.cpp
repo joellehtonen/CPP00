@@ -85,5 +85,4 @@ bool	PhoneBook::checkValidIndex(int index, std::string command)
 			return (true);
 	}
 	return (false);
-
 }

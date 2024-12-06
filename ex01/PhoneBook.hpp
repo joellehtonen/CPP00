@@ -14,7 +14,6 @@ class PhoneBook
 
 		Contact				contact[8];
 		std::vector<int>	list;
-
 		
 		void 		addContact(int index);
 		void 		displayAllContacts(int max_index);
