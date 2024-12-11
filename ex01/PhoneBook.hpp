@@ -21,5 +21,6 @@ class PhoneBook
 		void		displayContact(int index);
 		void		truncateContactInformation(std::string text);
 		void 		searchContact(void);
+		void		showFullContact(int index);
 		bool		checkValidIndex(int index, std::string command);
 };
