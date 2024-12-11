@@ -34,28 +34,8 @@ void	PhoneBook::truncateContactInformation(std::string text)
 	std::cout << std::setw(10) << text;
 	std::cout << "|";
 }
-
-void	PhoneBook::searchContact(void)
+void	PhoneBook::showFullContact(int index)
 {
-	std::string userInput;
-	int			index;
-
-	std::cout << "Please enter the index of an entry to display more information" << std::endl;
-	while (true)
-	{
-		std::cout << std::endl;
-		std::getline(std::cin, userInput);
-		std::cout << std::endl;
-		if (std::cin.eof() == true)
-			std::exit(0);
-		if (userInput.empty() == false 
-			&& userInput.length() == 1
-			&& this->contact->containsOnlyNumber(userInput) == true)
-			index = std::stoi(userInput);
-		if (this->checkValidIndex(index, "search") == true)
-			break ;
-		std::cout << "Please enter a valid index" << std::endl;
-	}
 	std::cout << "First name: ";
 	std::cout << this->contact[index].firstName << std::endl;
 	std::cout << "Last name: ";
@@ -68,16 +48,40 @@ void	PhoneBook::searchContact(void)
 	std::cout << this->contact[index].darkestSecret << std::endl;
 }
 
+void	PhoneBook::searchContact(void)
+{
+	std::string userInput;
+	int			index = -1;
+
+	std::cout << "Please enter the index of an entry to display more information" << std::endl;
+	while (true)
+	{
+		std::cout << std::endl;
+		std::getline(std::cin, userInput);
+		std::cout << std::endl;
+		if (std::cin.eof() == true)
+			std::exit(0);
+		if (userInput.empty() == false && userInput.length() == 1 && this->contact->containsOnlyNumber(userInput) == true)
+			index = std::stoi(userInput);
+		if (this->checkValidIndex(index, "search") == true)
+		{
+			PhoneBook::showFullContact(index);
+			break ;
+		}
+		std::cout << "Please enter a valid index" << std::endl;
+	}
+}
+
 bool	PhoneBook::checkValidIndex(int index, std::string command)
 {
 	if (command == "add")
 	{
-		list.push_back(index);
+		_list.push_back(index);
 		return (true);
 	}
 	if (command == "search")
 	{
-		if (std::find(list.begin(), list.end(), index) == list.end())
+		if (std::find(_list.begin(), _list.end(), index) == _list.end())
 		{
 			return (false);
 		}
