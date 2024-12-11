@@ -3,6 +3,7 @@
 void	PhoneBook::addContact(int index)
 {
 	this->contact[index].setContactInformation();
+	list_.append(std::to_string(index));
 }
 
 void	PhoneBook::displayAllContacts(int max_index)
@@ -62,31 +63,23 @@ void	PhoneBook::searchContact(void)
 		if (std::cin.eof() == true)
 			std::exit(0);
 		if (userInput.empty() == false && userInput.length() == 1 && this->contact->containsOnlyNumber(userInput) == true)
-			index = std::stoi(userInput);
-		if (this->checkValidIndex(index, "search") == true)
 		{
-			PhoneBook::showFullContact(index);
-			break ;
+			index = std::stoi(userInput);
+			if (this->checkValidIndex(userInput) == true)
+			{
+				PhoneBook::showFullContact(index);
+				break ;
+			}
 		}
 		std::cout << "Please enter a valid index" << std::endl;
 	}
 }
 
-bool	PhoneBook::checkValidIndex(int index, std::string command)
+bool	PhoneBook::checkValidIndex(std::string index)
 {
-	if (command == "add")
-	{
-		list_.push_back(index);
+	std::size_t found = list_.find(index);
+	if (found == std::string::npos)
+		return (false);
+	else
 		return (true);
-	}
-	if (command == "search")
-	{
-		if (std::find(list_.begin(), list_.end(), index) == list_.end())
-		{
-			return (false);
-		}
-		else
-			return (true);
-	}
-	return (false);
 }

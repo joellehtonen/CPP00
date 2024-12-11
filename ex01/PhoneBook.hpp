@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include <algorithm> //for .find
-#include <iomanip> //for setw
+#include <iomanip>
+#include <charconv>
 #include "Contact.hpp"
 
 class PhoneBook
@@ -22,5 +22,5 @@ class PhoneBook
 		void		truncateContactInformation(std::string text);
 		void 		searchContact(void);
 		void		showFullContact(int index);
-		bool		checkValidIndex(int index, std::string command);
+		bool		checkValidIndex(std::string index);
 };

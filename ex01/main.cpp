@@ -30,7 +30,6 @@ int main(void)
 			if (index > 7)
 				index = 0;
 			phoneBook.addContact(index);
-			phoneBook.checkValidIndex(index, "add");
 			index++;
 		}
 		else if (userInput == "SEARCH")
