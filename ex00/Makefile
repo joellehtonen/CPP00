@@ -2,7 +2,7 @@ NAME 	= megaphone
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++20
 SRCS	= megaphone.cpp
-OBJS 	= $(SRC:.cpp=.o)
+OBJS 	= $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
@@ -17,4 +17,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY:: all clean fclean re
+.PHONY: all clean fclean re
